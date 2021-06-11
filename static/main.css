@@ -1,0 +1,9 @@
+#preloader {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: white url(images/256x256.gif) no-repeat center center;
+    background-size: 10%;
+    z-index: 99999;
+    opacity: 1;
+}
