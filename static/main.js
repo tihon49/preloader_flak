@@ -1,13 +1,30 @@
-let preloader = document.getElementById('preloader');
+const preloader = document.getElementById('preloader');
+const formData = document.getElementById('upload')
+const input = document.querySelector('input')
+
+const Preload = (payload) => {
+    if (payload) preloader.style.visibility = 'visible'
+    else setTimeout(() => preloader.style.visibility = 'hidden', 2000) 
+}
 
 window.addEventListener('load', function() {
-    preloader.style.opacity = 0;
-    preloader.style.zIndex = -1;
+    Preload(false)
 })
 
-let button = document.getElementById('my_btn')
+const uploadFile = async (file) => {
+    try {
+        Preload(true)
+        const data = new FormData()
+        data.append('file', file)
+        await fetch('/', { method: 'POST', body: data })
+        Preload(false)
+    } catch (e) {
+        Preload(false)
+        console.log(e);
+    }
+}
 
-button.addEventListener('click', () => {
-    preloader.style.opacity = .7;
-    preloader.style.zIndex = 99999;
+formData.addEventListener('submit', (e) => {
+    uploadFile(input.files[0])
+    e.preventDefault()
 })
