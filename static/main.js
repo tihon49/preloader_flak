@@ -3,7 +3,7 @@ const buttonUpload = document.getElementById('get_file')
 
 const Preload = (payload) => {
     if (payload) preloader.style.visibility = 'visible'
-    else setTimeout(() => preloader.style.visibility = 'hidden', 2000) 
+    else setTimeout(() => preloader.style.visibility = 'hidden', 0) 
 }
 
 window.addEventListener('load', function() {
@@ -18,7 +18,7 @@ buttonUpload.addEventListener('click', (e) => {
         .then(blob => {
             const a = document.createElement("a");
             a.href = URL.createObjectURL(blob);
-            a.setAttribute("download", 'test.txt');
+            a.setAttribute("download", 'reg_file.gpg'); // тут указываем имя которое хотим присвоить скачиваемому файлу
             a.click();
         })
         .catch(e => console.log(e))

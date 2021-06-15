@@ -9,8 +9,8 @@ app.config['SECRET_KEY'] = 'askdjnasdkjnasdkjansd'
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        file = 'test.txt'
-        return send_file(file, as_attachment=True)
+        file = 'test.txt'  # файл который фактически скачиваем
+        return send_file(file, as_attachment=True, )
     return render_template('base.html')
 
 
